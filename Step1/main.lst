@@ -1,0 +1,76 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 5398      		cbi 42-32,3
+  27               	.LM3:
+  28 0002 389A      		sbi 39-32,0
+  29               	.LM4:
+  30 0004 80E1      		ldi r24,lo8(16)
+  31 0006 00D0      		rcall init_twi_slave
+  32               	.LM5:
+  33 0008 1092 0000 		sts i2cdata+2,__zero_reg__
+  34               	.LM6:
+  35 000c 1092 0000 		sts i2cdata+3,__zero_reg__
+  36               	.LM7:
+  37 0010 1092 0000 		sts i2cdata+4,__zero_reg__
+  38               	.LM8:
+  39 0014 1092 0000 		sts i2cdata+5,__zero_reg__
+  40               	.LM9:
+  41 0018 81E0      		ldi r24,lo8(1)
+  42               	.L7:
+  43               	.LM10:
+  44 001a 1092 0000 		sts i2cdata+1,__zero_reg__
+  45               	.LM11:
+  46 001e 1092 0000 		sts i2cdata+2,__zero_reg__
+  47               	.LM12:
+  48 0022 4B9B      		sbis 41-32,3
+  49 0024 00C0      		rjmp .L3
+  50               	.LM13:
+  51 0026 8093 0000 		sts i2cdata+1,r24
+  52 002a 00C0      		rjmp .L4
+  53               	.L3:
+  54               	.LM14:
+  55 002c 1092 0000 		sts i2cdata+1,__zero_reg__
+  56               	.L4:
+  57               	.LM15:
+  58 0030 9091 0000 		lds r25,i2cdata+2
+  59 0034 9130      		cpi r25,lo8(1)
+  60 0036 01F4      		brne .L5
+  61               	.LM16:
+  62 0038 409A      		sbi 40-32,0
+  63 003a 00C0      		rjmp .L7
+  64               	.L5:
+  65               	.LM17:
+  66 003c 4098      		cbi 40-32,0
+  67 003e 00C0      		rjmp .L7
+  68               	.LFE0:
+  70               		.comm i2cdata,10,1
+  95               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/cc9Ub15u.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc9Ub15u.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc9Ub15u.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc9Ub15u.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cc9Ub15u.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc9Ub15u.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc9Ub15u.s:18     .text:0000000000000000 main
+                            *COM*:000000000000000a i2cdata
+
+UNDEFINED SYMBOLS
+init_twi_slave
+__do_clear_bss

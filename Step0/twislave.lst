@@ -1,0 +1,197 @@
+   1               		.file	"twislave.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	init_twi_slave
+  18               	init_twi_slave:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	/* stack size = 0 */
+  25               	.L__stack_usage = 0
+  26               	.LM2:
+  27 0000 880F      		lsl r24
+  28               	.LVL1:
+  29 0002 8093 BA00 		sts 186,r24
+  30               	.LM3:
+  31 0006 ECEB      		ldi r30,lo8(188)
+  32 0008 F0E0      		ldi r31,hi8(188)
+  33 000a 8081      		ld r24,Z
+  34 000c 8F7D      		andi r24,lo8(-33)
+  35 000e 8083      		st Z,r24
+  36               	.LM4:
+  37 0010 8081      		ld r24,Z
+  38 0012 8564      		ori r24,lo8(69)
+  39 0014 8083      		st Z,r24
+  40               	.LM5:
+  41 0016 8FEF      		ldi r24,lo8(-1)
+  42 0018 8093 0000 		sts buffer_adr,r24
+  43               	.LM6:
+  44               	/* #APP */
+  45               	 ;  22 "twislave.c" 1
+  46 001c 7894      		sei
+  47               	 ;  0 "" 2
+  48               	/* epilogue start */
+  49               	.LM7:
+  50               	/* #NOAPP */
+  51 001e 0895      		ret
+  52               	.LFE0:
+  54               	.global	__vector_24
+  56               	__vector_24:
+  57               	.LFB1:
+  58               	.LM8:
+  59 0020 1F92      		push __zero_reg__
+  60 0022 0F92      		push r0
+  61 0024 0FB6      		in r0,__SREG__
+  62 0026 0F92      		push r0
+  63 0028 1124      		clr __zero_reg__
+  64 002a 8F93      		push r24
+  65 002c 9F93      		push r25
+  66 002e EF93      		push r30
+  67 0030 FF93      		push r31
+  68               	/* prologue: Signal */
+  69               	/* frame size = 0 */
+  70               	/* stack size = 7 */
+  71               	.L__stack_usage = 7
+  72               	.LVL2:
+  73               	.LM9:
+  74 0032 8091 B900 		lds r24,185
+  75 0036 90E0      		ldi r25,lo8(0)
+  76 0038 887F      		andi r24,lo8(248)
+  77 003a 9070      		andi r25,hi8(248)
+  78 003c 8038      		cpi r24,128
+  79 003e 9105      		cpc r25,__zero_reg__
+  80 0040 01F0      		breq .L5
+  81 0042 8138      		cpi r24,129
+  82 0044 9105      		cpc r25,__zero_reg__
+  83 0046 04F4      		brge .L7
+  84 0048 8036      		cpi r24,96
+  85 004a 9105      		cpc r25,__zero_reg__
+  86 004c 01F0      		breq .+2
+  87 004e 00C0      		rjmp .L3
+  88 0050 00C0      		rjmp .L19
+  89               	.L7:
+  90 0052 883A      		cpi r24,168
+  91 0054 9105      		cpc r25,__zero_reg__
+  92 0056 01F0      		breq .L6
+  93 0058 883B      		cpi r24,184
+  94 005a 9105      		cpc r25,__zero_reg__
+  95 005c 01F4      		brne .L3
+  96 005e 00C0      		rjmp .L6
+  97               	.L19:
+  98               	.LM10:
+  99 0060 85EC      		ldi r24,lo8(-59)
+ 100 0062 8093 BC00 		sts 188,r24
+ 101               	.LM11:
+ 102 0066 8FEF      		ldi r24,lo8(-1)
+ 103 0068 8093 0000 		sts buffer_adr,r24
+ 104               	.LM12:
+ 105 006c 00C0      		rjmp .L2
+ 106               	.L5:
+ 107               	.LM13:
+ 108 006e 8091 BB00 		lds r24,187
+ 109               	.LVL3:
+ 110               	.LM14:
+ 111 0072 9091 0000 		lds r25,buffer_adr
+ 112 0076 9F3F      		cpi r25,lo8(-1)
+ 113 0078 01F4      		brne .L9
+ 114               	.LM15:
+ 115 007a 8B30      		cpi r24,lo8(11)
+ 116 007c 00F0      		brlo .L18
+ 117               	.L10:
+ 118               	.LM16:
+ 119 007e 1092 0000 		sts buffer_adr,__zero_reg__
+ 120 0082 00C0      		rjmp .L15
+ 121               	.L9:
+ 122               	.LM17:
+ 123 0084 9091 0000 		lds r25,buffer_adr
+ 124 0088 9B30      		cpi r25,lo8(11)
+ 125 008a 00F4      		brsh .L17
+ 126               	.LM18:
+ 127 008c E091 0000 		lds r30,buffer_adr
+ 128 0090 F0E0      		ldi r31,lo8(0)
+ 129 0092 E050      		subi r30,lo8(-(i2cdata))
+ 130 0094 F040      		sbci r31,hi8(-(i2cdata))
+ 131 0096 8083      		st Z,r24
+ 132 0098 00C0      		rjmp .L17
+ 133               	.LVL4:
+ 134               	.L6:
+ 135               	.LM19:
+ 136 009a 8091 0000 		lds r24,buffer_adr
+ 137 009e 8F3F      		cpi r24,lo8(-1)
+ 138 00a0 01F4      		brne .L13
+ 139               	.LM20:
+ 140 00a2 1092 0000 		sts buffer_adr,__zero_reg__
+ 141               	.L13:
+ 142               	.LM21:
+ 143 00a6 8091 0000 		lds r24,buffer_adr
+ 144 00aa 8B30      		cpi r24,lo8(11)
+ 145 00ac 00F4      		brsh .L14
+ 146               	.LM22:
+ 147 00ae E091 0000 		lds r30,buffer_adr
+ 148 00b2 F0E0      		ldi r31,lo8(0)
+ 149 00b4 E050      		subi r30,lo8(-(i2cdata))
+ 150 00b6 F040      		sbci r31,hi8(-(i2cdata))
+ 151 00b8 8081      		ld r24,Z
+ 152 00ba 8093 BB00 		sts 187,r24
+ 153               	.LVL5:
+ 154               	.L17:
+ 155               	.LM23:
+ 156 00be 8091 0000 		lds r24,buffer_adr
+ 157 00c2 8F5F      		subi r24,lo8(-(1))
+ 158               	.L18:
+ 159 00c4 8093 0000 		sts buffer_adr,r24
+ 160 00c8 00C0      		rjmp .L15
+ 161               	.LVL6:
+ 162               	.L14:
+ 163               	.LM24:
+ 164 00ca 1092 BB00 		sts 187,__zero_reg__
+ 165               	.LVL7:
+ 166               	.L15:
+ 167               	.LM25:
+ 168 00ce 85EC      		ldi r24,lo8(-59)
+ 169 00d0 00C0      		rjmp .L16
+ 170               	.LVL8:
+ 171               	.L3:
+ 172               	.LM26:
+ 173 00d2 85ED      		ldi r24,lo8(-43)
+ 174               	.LVL9:
+ 175               	.L16:
+ 176 00d4 8093 BC00 		sts 188,r24
+ 177               	.L2:
+ 178               	/* epilogue start */
+ 179               	.LM27:
+ 180 00d8 FF91      		pop r31
+ 181 00da EF91      		pop r30
+ 182 00dc 9F91      		pop r25
+ 183 00de 8F91      		pop r24
+ 184 00e0 0F90      		pop r0
+ 185 00e2 0FBE      		out __SREG__,r0
+ 186 00e4 0F90      		pop r0
+ 187 00e6 1F90      		pop __zero_reg__
+ 188 00e8 1895      		reti
+ 189               	.LFE1:
+ 191               		.comm i2cdata,10,1
+ 192               		.comm buffer_adr,1,1
+ 225               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 twislave.c
+     /tmp/ccUUsnQf.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccUUsnQf.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccUUsnQf.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccUUsnQf.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccUUsnQf.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccUUsnQf.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccUUsnQf.s:18     .text:0000000000000000 init_twi_slave
+                            *COM*:0000000000000001 buffer_adr
+     /tmp/ccUUsnQf.s:56     .text:0000000000000020 __vector_24
+                            *COM*:000000000000000a i2cdata
+
+UNDEFINED SYMBOLS
+__do_clear_bss

@@ -1,0 +1,412 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__ = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	init_S0_Counters
+  18               	init_S0_Counters:
+  19               	.LFB0:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	/* stack size = 0 */
+  24               	.L__stack_usage = 0
+  25               	.LM2:
+  26 0000 1092 0000 		sts S0_counter1,__zero_reg__
+  27 0004 1092 0000 		sts S0_counter1+1,__zero_reg__
+  28 0008 1092 0000 		sts S0_counter1+2,__zero_reg__
+  29 000c 1092 0000 		sts S0_counter1+3,__zero_reg__
+  30               	.LM3:
+  31 0010 1092 0000 		sts S0_counter2,__zero_reg__
+  32 0014 1092 0000 		sts S0_counter2+1,__zero_reg__
+  33 0018 1092 0000 		sts S0_counter2+2,__zero_reg__
+  34 001c 1092 0000 		sts S0_counter2+3,__zero_reg__
+  35               	.LM4:
+  36 0020 1092 0000 		sts S0_counter1_buf,__zero_reg__
+  37 0024 1092 0000 		sts S0_counter1_buf+1,__zero_reg__
+  38 0028 1092 0000 		sts S0_counter1_buf+2,__zero_reg__
+  39 002c 1092 0000 		sts S0_counter1_buf+3,__zero_reg__
+  40               	.LM5:
+  41 0030 1092 0000 		sts S0_counter2_buf,__zero_reg__
+  42 0034 1092 0000 		sts S0_counter2_buf+1,__zero_reg__
+  43 0038 1092 0000 		sts S0_counter2_buf+2,__zero_reg__
+  44 003c 1092 0000 		sts S0_counter2_buf+3,__zero_reg__
+  45               	.LM6:
+  46 0040 8AB1      		in r24,42-32
+  47 0042 837F      		andi r24,lo8(-13)
+  48 0044 8AB9      		out 42-32,r24
+  49               	.LM7:
+  50 0046 8BB1      		in r24,43-32
+  51 0048 8C60      		ori r24,lo8(12)
+  52 004a 8BB9      		out 43-32,r24
+  53               	.LM8:
+  54 004c E9E6      		ldi r30,lo8(105)
+  55 004e F0E0      		ldi r31,hi8(105)
+  56 0050 8081      		ld r24,Z
+  57 0052 8B60      		ori r24,lo8(11)
+  58 0054 8083      		st Z,r24
+  59               	.LM9:
+  60 0056 8DB3      		in r24,61-32
+  61 0058 8360      		ori r24,lo8(3)
+  62 005a 8DBB      		out 61-32,r24
+  63               	.LM10:
+  64 005c E1E8      		ldi r30,lo8(129)
+  65 005e F0E0      		ldi r31,hi8(129)
+  66 0060 8081      		ld r24,Z
+  67 0062 8560      		ori r24,lo8(5)
+  68 0064 8083      		st Z,r24
+  69               	.LM11:
+  70 0066 EFE6      		ldi r30,lo8(111)
+  71 0068 F0E0      		ldi r31,hi8(111)
+  72 006a 8081      		ld r24,Z
+  73 006c 8160      		ori r24,lo8(1)
+  74 006e 8083      		st Z,r24
+  75               	.LM12:
+  76               	/* #APP */
+  77               	 ;  45 "main.c" 1
+  78 0070 7894      		sei
+  79               	 ;  0 "" 2
+  80               	/* epilogue start */
+  81               	.LM13:
+  82               	/* #NOAPP */
+  83 0072 0895      		ret
+  84               	.LFE0:
+  86               	.global	__vector_13
+  88               	__vector_13:
+  89               	.LFB1:
+  90               	.LM14:
+  91 0074 1F92      		push __zero_reg__
+  92 0076 0F92      		push r0
+  93 0078 0FB6      		in r0,__SREG__
+  94 007a 0F92      		push r0
+  95 007c 1124      		clr __zero_reg__
+  96 007e 2F93      		push r18
+  97 0080 3F93      		push r19
+  98 0082 4F93      		push r20
+  99 0084 5F93      		push r21
+ 100 0086 8F93      		push r24
+ 101 0088 9F93      		push r25
+ 102 008a AF93      		push r26
+ 103 008c BF93      		push r27
+ 104               	/* prologue: Signal */
+ 105               	/* frame size = 0 */
+ 106               	/* stack size = 11 */
+ 107               	.L__stack_usage = 11
+ 108               	.LM15:
+ 109 008e 8091 0000 		lds r24,S0_counter1
+ 110 0092 9091 0000 		lds r25,S0_counter1+1
+ 111 0096 A091 0000 		lds r26,S0_counter1+2
+ 112 009a B091 0000 		lds r27,S0_counter1+3
+ 113 009e 0097      		sbiw r24,0
+ 114 00a0 A105      		cpc r26,__zero_reg__
+ 115 00a2 B105      		cpc r27,__zero_reg__
+ 116 00a4 01F4      		brne .L3
+ 117               	.LM16:
+ 118 00a6 8091 0000 		lds r24,S0_counter2
+ 119 00aa 9091 0000 		lds r25,S0_counter2+1
+ 120 00ae A091 0000 		lds r26,S0_counter2+2
+ 121 00b2 B091 0000 		lds r27,S0_counter2+3
+ 122 00b6 0097      		sbiw r24,0
+ 123 00b8 A105      		cpc r26,__zero_reg__
+ 124 00ba B105      		cpc r27,__zero_reg__
+ 125 00bc 01F4      		brne .L3
+ 126               	.LM17:
+ 127 00be 87E1      		ldi r24,lo8(23)
+ 128 00c0 00C0      		rjmp .L6
+ 129               	.L3:
+ 130               	.LM18:
+ 131 00c2 2091 0000 		lds r18,S0_counter1
+ 132 00c6 3091 0000 		lds r19,S0_counter1+1
+ 133 00ca 4091 0000 		lds r20,S0_counter1+2
+ 134 00ce 5091 0000 		lds r21,S0_counter1+3
+ 135 00d2 8091 0000 		lds r24,S0_counter1_buf
+ 136 00d6 9091 0000 		lds r25,S0_counter1_buf+1
+ 137 00da A091 0000 		lds r26,S0_counter1_buf+2
+ 138 00de B091 0000 		lds r27,S0_counter1_buf+3
+ 139 00e2 2817      		cp r18,r24
+ 140 00e4 3907      		cpc r19,r25
+ 141 00e6 4A07      		cpc r20,r26
+ 142 00e8 5B07      		cpc r21,r27
+ 143 00ea 01F4      		brne .L5
+ 144               	.LM19:
+ 145 00ec 84E1      		ldi r24,lo8(20)
+ 146 00ee 00C0      		rjmp .L6
+ 147               	.L5:
+ 148               	.LM20:
+ 149 00f0 2091 0000 		lds r18,S0_counter2
+ 150 00f4 3091 0000 		lds r19,S0_counter2+1
+ 151 00f8 4091 0000 		lds r20,S0_counter2+2
+ 152 00fc 5091 0000 		lds r21,S0_counter2+3
+ 153 0100 8091 0000 		lds r24,S0_counter2_buf
+ 154 0104 9091 0000 		lds r25,S0_counter2_buf+1
+ 155 0108 A091 0000 		lds r26,S0_counter2_buf+2
+ 156 010c B091 0000 		lds r27,S0_counter2_buf+3
+ 157 0110 2817      		cp r18,r24
+ 158 0112 3907      		cpc r19,r25
+ 159 0114 4A07      		cpc r20,r26
+ 160 0116 5B07      		cpc r21,r27
+ 161 0118 01F4      		brne .L4
+ 162               	.LM21:
+ 163 011a 85E1      		ldi r24,lo8(21)
+ 164               	.L6:
+ 165 011c 8093 0000 		sts i2cdata+1,r24
+ 166               	.L4:
+ 167               	.LM22:
+ 168 0120 8091 0000 		lds r24,S0_counter1
+ 169 0124 9091 0000 		lds r25,S0_counter1+1
+ 170 0128 A091 0000 		lds r26,S0_counter1+2
+ 171 012c B091 0000 		lds r27,S0_counter1+3
+ 172 0130 8093 0000 		sts S0_counter1_buf,r24
+ 173 0134 9093 0000 		sts S0_counter1_buf+1,r25
+ 174 0138 A093 0000 		sts S0_counter1_buf+2,r26
+ 175 013c B093 0000 		sts S0_counter1_buf+3,r27
+ 176               	.LM23:
+ 177 0140 8091 0000 		lds r24,S0_counter2
+ 178 0144 9091 0000 		lds r25,S0_counter2+1
+ 179 0148 A091 0000 		lds r26,S0_counter2+2
+ 180 014c B091 0000 		lds r27,S0_counter2+3
+ 181 0150 8093 0000 		sts S0_counter2_buf,r24
+ 182 0154 9093 0000 		sts S0_counter2_buf+1,r25
+ 183 0158 A093 0000 		sts S0_counter2_buf+2,r26
+ 184 015c B093 0000 		sts S0_counter2_buf+3,r27
+ 185               	/* epilogue start */
+ 186               	.LM24:
+ 187 0160 BF91      		pop r27
+ 188 0162 AF91      		pop r26
+ 189 0164 9F91      		pop r25
+ 190 0166 8F91      		pop r24
+ 191 0168 5F91      		pop r21
+ 192 016a 4F91      		pop r20
+ 193 016c 3F91      		pop r19
+ 194 016e 2F91      		pop r18
+ 195 0170 0F90      		pop r0
+ 196 0172 0FBE      		out __SREG__,r0
+ 197 0174 0F90      		pop r0
+ 198 0176 1F90      		pop __zero_reg__
+ 199 0178 1895      		reti
+ 200               	.LFE1:
+ 202               	.global	__vector_1
+ 204               	__vector_1:
+ 205               	.LFB2:
+ 206               	.LM25:
+ 207 017a 1F92      		push __zero_reg__
+ 208 017c 0F92      		push r0
+ 209 017e 0FB6      		in r0,__SREG__
+ 210 0180 0F92      		push r0
+ 211 0182 1124      		clr __zero_reg__
+ 212 0184 8F93      		push r24
+ 213 0186 9F93      		push r25
+ 214 0188 AF93      		push r26
+ 215 018a BF93      		push r27
+ 216               	/* prologue: Signal */
+ 217               	/* frame size = 0 */
+ 218               	/* stack size = 7 */
+ 219               	.L__stack_usage = 7
+ 220               	.LM26:
+ 221 018c 8091 0000 		lds r24,S0_counter1
+ 222 0190 9091 0000 		lds r25,S0_counter1+1
+ 223 0194 A091 0000 		lds r26,S0_counter1+2
+ 224 0198 B091 0000 		lds r27,S0_counter1+3
+ 225 019c 0196      		adiw r24,1
+ 226 019e A11D      		adc r26,__zero_reg__
+ 227 01a0 B11D      		adc r27,__zero_reg__
+ 228 01a2 8093 0000 		sts S0_counter1,r24
+ 229 01a6 9093 0000 		sts S0_counter1+1,r25
+ 230 01aa A093 0000 		sts S0_counter1+2,r26
+ 231 01ae B093 0000 		sts S0_counter1+3,r27
+ 232               	/* epilogue start */
+ 233 01b2 BF91      		pop r27
+ 234 01b4 AF91      		pop r26
+ 235 01b6 9F91      		pop r25
+ 236 01b8 8F91      		pop r24
+ 237 01ba 0F90      		pop r0
+ 238 01bc 0FBE      		out __SREG__,r0
+ 239 01be 0F90      		pop r0
+ 240 01c0 1F90      		pop __zero_reg__
+ 241 01c2 1895      		reti
+ 242               	.LFE2:
+ 244               	.global	__vector_2
+ 246               	__vector_2:
+ 247               	.LFB3:
+ 248               	.LM27:
+ 249 01c4 1F92      		push __zero_reg__
+ 250 01c6 0F92      		push r0
+ 251 01c8 0FB6      		in r0,__SREG__
+ 252 01ca 0F92      		push r0
+ 253 01cc 1124      		clr __zero_reg__
+ 254 01ce 8F93      		push r24
+ 255 01d0 9F93      		push r25
+ 256 01d2 AF93      		push r26
+ 257 01d4 BF93      		push r27
+ 258               	/* prologue: Signal */
+ 259               	/* frame size = 0 */
+ 260               	/* stack size = 7 */
+ 261               	.L__stack_usage = 7
+ 262               	.LM28:
+ 263 01d6 8091 0000 		lds r24,S0_counter2
+ 264 01da 9091 0000 		lds r25,S0_counter2+1
+ 265 01de A091 0000 		lds r26,S0_counter2+2
+ 266 01e2 B091 0000 		lds r27,S0_counter2+3
+ 267 01e6 0196      		adiw r24,1
+ 268 01e8 A11D      		adc r26,__zero_reg__
+ 269 01ea B11D      		adc r27,__zero_reg__
+ 270 01ec 8093 0000 		sts S0_counter2,r24
+ 271 01f0 9093 0000 		sts S0_counter2+1,r25
+ 272 01f4 A093 0000 		sts S0_counter2+2,r26
+ 273 01f8 B093 0000 		sts S0_counter2+3,r27
+ 274               	/* epilogue start */
+ 275 01fc BF91      		pop r27
+ 276 01fe AF91      		pop r26
+ 277 0200 9F91      		pop r25
+ 278 0202 8F91      		pop r24
+ 279 0204 0F90      		pop r0
+ 280 0206 0FBE      		out __SREG__,r0
+ 281 0208 0F90      		pop r0
+ 282 020a 1F90      		pop __zero_reg__
+ 283 020c 1895      		reti
+ 284               	.LFE3:
+ 286               	.global	main
+ 288               	main:
+ 289               	.LFB4:
+ 290               	.LM29:
+ 291               	/* prologue: function */
+ 292               	/* frame size = 0 */
+ 293               	/* stack size = 0 */
+ 294               	.L__stack_usage = 0
+ 295               	.LM30:
+ 296 020e 8FEF      		ldi r24,lo8(-1)
+ 297 0210 84B9      		out 36-32,r24
+ 298               	.LM31:
+ 299 0212 15B8      		out 37-32,__zero_reg__
+ 300               	.LM32:
+ 301 0214 80E1      		ldi r24,lo8(16)
+ 302 0216 00D0      		rcall init_twi_slave
+ 303               	.LM33:
+ 304 0218 00D0      		rcall init_S0_Counters
+ 305               	.LM34:
+ 306 021a 41E0      		ldi r20,lo8(1)
+ 307               	.LM35:
+ 308 021c 32E0      		ldi r19,lo8(2)
+ 309               	.LM36:
+ 310 021e 23E0      		ldi r18,lo8(3)
+ 311               	.L24:
+ 312               	.LM37:
+ 313 0220 4093 0000 		sts i2cdata+2,r20
+ 314               	.LM38:
+ 315 0224 3093 0000 		sts i2cdata+3,r19
+ 316               	.LM39:
+ 317 0228 2093 0000 		sts i2cdata+4,r18
+ 318               	.LM40:
+ 319 022c 2093 0000 		sts i2cdata+5,r18
+ 320               	.LM41:
+ 321 0230 8091 0000 		lds r24,i2cdata+1
+ 322 0234 90E0      		ldi r25,lo8(0)
+ 323 0236 4297      		sbiw r24,18
+ 324 0238 8830      		cpi r24,8
+ 325 023a 9105      		cpc r25,__zero_reg__
+ 326 023c 00F4      		brsh .L24
+ 327 023e 8050      		subi r24,lo8(-(gs(.L20)))
+ 328 0240 9040      		sbci r25,hi8(-(gs(.L20)))
+ 329 0242 8F93      		push r24
+ 330 0244 9F93      		push r25
+ 331 0246 0895      		ret
+ 332               		.data
+ 333               		.section .progmem.gcc_sw_table, "ax", @progbits
+ 334               		.p2align 1
+ 335               	.L20:
+ 336               		.data
+ 337               		.section .progmem.gcc_sw_table, "ax", @progbits
+ 338               		.p2align 1
+ 339 0000 00C0      		rjmp .L12
+ 340 0002 00C0      		rjmp .L13
+ 341 0004 00C0      		rjmp .L14
+ 342 0006 00C0      		rjmp .L15
+ 343 0008 00C0      		rjmp .L16
+ 344 000a 00C0      		rjmp .L17
+ 345 000c 00C0      		rjmp .L18
+ 346 000e 00C0      		rjmp .L19
+ 347               		.text
+ 348               	.L12:
+ 349               	.LM42:
+ 350 0248 299A      		sbi 37-32,1
+ 351 024a 00C0      		rjmp .L24
+ 352               	.L13:
+ 353               	.LM43:
+ 354 024c 289A      		sbi 37-32,0
+ 355 024e 00C0      		rjmp .L24
+ 356               	.L14:
+ 357               	.LM44:
+ 358 0250 2998      		cbi 37-32,1
+ 359 0252 00C0      		rjmp .L24
+ 360               	.L15:
+ 361               	.LM45:
+ 362 0254 2898      		cbi 37-32,0
+ 363 0256 00C0      		rjmp .L24
+ 364               	.L16:
+ 365               	.LM46:
+ 366 0258 85B1      		in r24,37-32
+ 367 025a 8360      		ori r24,lo8(3)
+ 368 025c 85B9      		out 37-32,r24
+ 369 025e 8091 6F00 		lds r24,111
+ 370 0262 8160      		ori r24,lo8(1)
+ 371 0264 8093 6F00 		sts 111,r24
+ 372 0268 00C0      		rjmp .L24
+ 373               	.L17:
+ 374               	.LM47:
+ 375 026a 85B1      		in r24,37-32
+ 376 026c 8C7F      		andi r24,lo8(-4)
+ 377 026e 85B9      		out 37-32,r24
+ 378 0270 00C0      		rjmp .L24
+ 379               	.L18:
+ 380               	.LM48:
+ 381 0272 1092 0000 		sts S0_counter1,__zero_reg__
+ 382 0276 1092 0000 		sts S0_counter1+1,__zero_reg__
+ 383 027a 1092 0000 		sts S0_counter1+2,__zero_reg__
+ 384 027e 1092 0000 		sts S0_counter1+3,__zero_reg__
+ 385 0282 00C0      		rjmp .L24
+ 386               	.L19:
+ 387               	.LM49:
+ 388 0284 1092 0000 		sts S0_counter2,__zero_reg__
+ 389 0288 1092 0000 		sts S0_counter2+1,__zero_reg__
+ 390 028c 1092 0000 		sts S0_counter2+2,__zero_reg__
+ 391 0290 1092 0000 		sts S0_counter2+3,__zero_reg__
+ 392 0294 00C0      		rjmp .L24
+ 393               	.LFE4:
+ 395               	.global	cnt
+ 396               	.global	cnt
+ 397               		.section .bss
+ 400               	cnt:
+ 401 0000 0000 0000 		.skip 4,0
+ 402               		.comm i2cdata,10,1
+ 403               		.comm S0_counter1,4,1
+ 404               		.comm S0_counter2,4,1
+ 405               		.comm S0_counter1_buf,4,1
+ 406               		.comm S0_counter2_buf,4,1
+ 463               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccag6gwe.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccag6gwe.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccag6gwe.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccag6gwe.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccag6gwe.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccag6gwe.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccag6gwe.s:18     .text:0000000000000000 init_S0_Counters
+                            *COM*:0000000000000004 S0_counter1
+                            *COM*:0000000000000004 S0_counter2
+                            *COM*:0000000000000004 S0_counter1_buf
+                            *COM*:0000000000000004 S0_counter2_buf
+     /tmp/ccag6gwe.s:88     .text:0000000000000074 __vector_13
+                            *COM*:000000000000000a i2cdata
+     /tmp/ccag6gwe.s:204    .text:000000000000017a __vector_1
+     /tmp/ccag6gwe.s:246    .text:00000000000001c4 __vector_2
+     /tmp/ccag6gwe.s:288    .text:000000000000020e main
+     /tmp/ccag6gwe.s:400    .bss:0000000000000000 cnt
+
+UNDEFINED SYMBOLS
+init_twi_slave
+__do_copy_data
+__do_clear_bss
